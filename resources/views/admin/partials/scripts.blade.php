@@ -8,3 +8,9 @@
 <script src="{{ URL::asset('dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ URL::asset('dist/js/demo.js') }}"></script>
+
+<script>
+    $(".delete").on("submit", function () {
+        return confirm("Do you want to remove this?");
+    });
+</script>
