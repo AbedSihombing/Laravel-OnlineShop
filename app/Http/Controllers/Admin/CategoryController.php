@@ -29,6 +29,10 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        $categories = Category::orderBy('name', 'asc')->get();
+
+        $this->data['categories'] = $categories->toArray();
+        $this->data['category'] = null;
         return view('admin.categories.form', $this->data);
     }
 
@@ -42,7 +46,7 @@ class CategoryController extends Controller
     {
         $params = $request->except('_token');
         $params['slug'] = Str::slug($params['name']);
-        $params['parent_id'] = 0;
+        $params['parent_id'] = $params['parent_id'];
 
         if (Category::create($params)) {
             Session::flash('success', 'Category has been saved');
@@ -71,6 +75,9 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
+        $categories = Category::orderBy('name', 'asc')->get();
+
+        $this->data['categories'] = $categories->toArray();
         $this->data['category'] = $category;
         return view('admin.categories.form', $this->data);
     }
