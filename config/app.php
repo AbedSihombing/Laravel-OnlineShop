@@ -176,6 +176,9 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         App\Providers\GeneralServiceProvider::class,
+
+        Spatie\Permission\PermissionServiceProvider::class,        
+        Laracasts\Flash\FlashServiceProvider::class,
     ],
 
     /*
@@ -229,7 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'General' => App\Helpers\General::class,
-
+            
     ],
 
 ];
